@@ -146,7 +146,7 @@ module Jekyll
     #
     # Returns nothing.
     def render
-      deprecated_rel_permalink
+      relative_permalinks_are_deprecated
 
       payload = site_payload
       collections.each do |label, collection|
@@ -281,12 +281,12 @@ module Jekyll
       end
     end
 
-    # Warns the user if permanent links are relative tot the parent
+    # Warns the user if permanent links are relative to the parent
     # directory. As this is a deprecated function of Jekyll.
     #
     # Returns
-    def deprecated_rel_permalink
-      if config['relative_permalinks'] && has_relative_page?
+    def relative_permalinks_are_deprecated
+    if config['relative_permalinks'] && has_relative_page?
         Jekyll::Deprecator.deprecation_message "Since v2.0, permalinks for pages" +
                                             " in subfolders must be relative to the" +
                                             " site source directory, not the parent" +
